@@ -5,3 +5,5 @@ bin-int
 
 # file 
 *.user
+*.sln
+*.vcxproj*
