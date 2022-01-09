@@ -7,7 +7,6 @@ namespace MOY {
 
 	void Application::run() {
 		while (true) {
-
 		}
 	}
 }
