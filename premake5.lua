@@ -9,11 +9,14 @@ project "MOY"
 	kind "SharedLib"
 	language "C++"
 	files{"%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp"}
-	includedirs{"%{prj.name}/ext/spdlog/include"}
+	includedirs{"%{prj.name}/ext/spdlog/include", "%{prj.name}/src"}
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}" )
 	
+	pchheader "moypch.h"
+	pchsource "MOY/src/moypch.cpp"
+
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"

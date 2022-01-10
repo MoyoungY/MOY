@@ -1,5 +1,5 @@
+#include "moypch.h"
 #include "Application.h"
-#include <iostream>
 
 namespace MOY {
 	Application::Application(){}
