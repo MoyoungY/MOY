@@ -1,3 +1,6 @@
 [submodule "MOY/ext/spdlog"]
 	path = MOY/ext/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "MOY/ext/glfw"]
+	path = MOY/ext/glfw
+	url = git@github.com:MoyoungY/glfw.git
