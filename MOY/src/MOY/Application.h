@@ -11,6 +11,6 @@ namespace MOY{
 		void run();
 	};
 
-	// to be difined in client
+	// to be defined in client
 	Application* createNewApplication();
 }

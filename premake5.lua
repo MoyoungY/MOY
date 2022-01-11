@@ -2,20 +2,32 @@ workspace "MOY"
 	configurations {"Debug", "Release", "Dist"}
 	architecture "x64"
 
+	flags
+	{
+		"MultiProcessorCompile"
+	}
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Include dir relative to root folder (Solution dir)
+IncludeDir = {}
+IncludeDir["glfw"] = "MOY/ext/glfw/include"
+include "MOY/ext/glfw"
 
 project "MOY"
 	location "MOY"
 	kind "SharedLib"
 	language "C++"
 	files{"%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp"}
-	includedirs{"%{prj.name}/ext/spdlog/include", "%{prj.name}/src"}
+	includedirs{"%{prj.name}/ext/spdlog/include", "%{prj.name}/src", "%{IncludeDir.glfw}"}
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}" )
 	
 	pchheader "moypch.h"
 	pchsource "MOY/src/moypch.cpp"
+
+	links{"GLFW", "opengl32.lib"}
 
 	filter "system:windows"
 		cppdialect "C++17"
@@ -33,6 +45,7 @@ project "MOY"
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir.. "/Sandbox")
 		}
 
+
 	filter "configurations:Debug"
 		defines "MOY_DEBUG"
 		symbols "On"
@@ -44,6 +57,9 @@ project "MOY"
 	filter "configurations:Dist"
 		defines "MOY_Dist"
 		optimize "On"
+
+	filter {"system:windows","configurations:Release"}
+		buildoptions "/MT"
 
 project "Sandbox"
 	location "Sandbox"

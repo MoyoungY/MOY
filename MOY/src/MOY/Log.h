@@ -21,8 +21,11 @@ namespace MOY {
 #define MOY_CORE_INFO(...)		MOY::Log::GetCoreLogger()->info(__VA_ARGS__);
 #define MOY_CORE_WARN(...)		MOY::Log::GetCoreLogger()->warn(__VA_ARGS__);
 #define MOY_CORE_ERROR(...)		MOY::Log::GetCoreLogger()->error(__VA_ARGS__);
+#define MOY_CORE_CRITICAL(...)	MOY::Log::GetCoreLogger()->critical(__VA_ARGS__);
 #define MOY_Client_TRACE(...)	MOY::Log::GetClientLogger()->trace(__VA_ARGS__);
 #define MOY_Client_INFO(...)	MOY::Log::GetClientLogger()->info(__VA_ARGS__);
 #define MOY_Client_WARN(...)	MOY::Log::GetClientLogger()->warn(__VA_ARGS__);
 #define MOY_Client_ERROR(...)	MOY::Log::GetClientLogger()->error(__VA_ARGS__);
+#define MOY_Client_CRITICAL(...)MOY::Log::GetClientLogger()->critical(__VA_ARGS__);
+
 
