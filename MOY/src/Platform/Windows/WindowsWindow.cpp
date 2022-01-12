@@ -2,6 +2,7 @@
 #include "MOY/Window.h"
 #include "WindowsWindow.h"
 #include "MOY/Log.h"
+#include "MOY/Event/ApplicationEvent.h"
 
 namespace MOY 
 {
@@ -46,6 +47,14 @@ namespace MOY
 		glfwMakeContextCurrent(m_window);
 		glfwSetWindowUserPointer(m_window, &m_windowdata);
 		SetVSync(true);
+
+		// set callback
+		glfwSetWindowCloseCallback(m_window, [](GLFWwindow* window)
+			{
+				WindowData& data = *(WindowData *)glfwGetWindowUserPointer(window);
+				WindowCloseEvent event;
+				data.EventCallback(event);
+			});
 	}
 
 	void WindowsWindow::Shutdown()

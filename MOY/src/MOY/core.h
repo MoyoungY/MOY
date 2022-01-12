@@ -10,3 +10,5 @@
 	#error "ONLY SUPPORT WINDOWS NOW!
 #endif // MOY_PLATFORM_WINDOWS
 
+#define BIT(x) (1 << x)
+
